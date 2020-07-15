@@ -10,7 +10,7 @@ import face_recognition
 import imutils
 import pickle
 #from check_attendance import CheckAttendance
-from PyQt4 import QtGui,QtCore
+from PyQt5 import QtGui,QtCore,QtWidgets
 from openpyxl import Workbook
 import datetime
 import subprocess
@@ -19,7 +19,7 @@ import subprocess
 conn=sqlite3.connect("Face-Data")
 c=conn.cursor()
 
-class AttendanceWindow(QtGui.QMainWindow):
+class AttendanceWindow(QtWidgets.QMainWindow):
     #Attendance Window
     def __init__(self):
         super(AttendanceWindow, self).__init__()
@@ -28,7 +28,7 @@ class AttendanceWindow(QtGui.QMainWindow):
         self.setWindowIcon(QtGui.QIcon('other_images/logo.png'))
 
         #Heading
-        h=QtGui.QLabel(self)
+        h=QtWidgets.QLabel(self)
         h.setAlignment(QtCore.Qt.AlignCenter)
         h.setGeometry(QtCore.QRect(200,20,400,50))
         h.setStyleSheet("QLabel { background-color : blue;color :white ; }")
@@ -37,7 +37,7 @@ class AttendanceWindow(QtGui.QMainWindow):
         h.setText("ATTENDANCE")
 
         #Recording Button
-        b1=QtGui.QPushButton(self)
+        b1=QtWidgets.QPushButton(self)
         b1.setText("RECORD AND MARK")
         b1.setStyleSheet("QPushButton { background-color : gray;color : black ; }")
         b1.setFont(font)
@@ -45,7 +45,7 @@ class AttendanceWindow(QtGui.QMainWindow):
         b1.clicked.connect(self.record_and_mark)
 
         #Check Attendance button to check specific subject's Attendance
-        b2=QtGui.QPushButton(self)
+        b2=QtWidgets.QPushButton(self)
         b2.setText("CHECK ATTENDANCE")
         b2.setStyleSheet("QPushButton { background-color : gray;color : black ; }")
         b2.setFont(font)
@@ -191,7 +191,7 @@ class AttendanceWindow(QtGui.QMainWindow):
 
             
 if __name__ == '__main__':
-    app = QtGui.QApplication([])
+    app = QtWidgets.QApplication([])
     gui = AttendanceWindow()
     gui.show()
     app.exec_()

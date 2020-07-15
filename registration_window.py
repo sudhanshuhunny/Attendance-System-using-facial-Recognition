@@ -3,7 +3,7 @@ import numpy as np                                                              
 import sqlite3
 import dlib
 import os       
-from PyQt4 import QtGui,QtCore
+from PyQt5 import QtGui,QtCore,QtWidgets
 
 from imutils import paths
 import face_recognition
@@ -13,7 +13,7 @@ import pickle
 detector = dlib.get_frontal_face_detector()
 
 
-class RegistrationWindow(QtGui.QMainWindow):
+class RegistrationWindow(QtWidgets.QMainWindow):
     #Registration window for student registration
       
     def __init__(self):
@@ -25,7 +25,7 @@ class RegistrationWindow(QtGui.QMainWindow):
         self.setWindowIcon(QtGui.QIcon('logo/logo'))
 
         #Heading
-        h=QtGui.QLabel(self)
+        h=QtWidgets.QLabel(self)
         h.setAlignment(QtCore.Qt.AlignCenter)
         h.setGeometry(QtCore.QRect(100,30,600,60))
         h.setStyleSheet("QLabel { background-color : blue;color :white ; }")
@@ -34,12 +34,12 @@ class RegistrationWindow(QtGui.QMainWindow):
         h.setText("REGISTRATION")
 
         #Pseudo photo ID to be replaced by Student's Photo
-        self.pic=QtGui.QLabel(self)
+        self.pic=QtWidgets.QLabel(self)
         self.pic.setGeometry(50,120,320,320)
         self.pic.setPixmap(QtGui.QPixmap("logo/default.png"))
 
         #Button for opening Webcam and take photo 
-        b=QtGui.QPushButton(self)
+        b=QtWidgets.QPushButton(self)
         b.setText("CLICK")
         b.setFont(QtGui.QFont("Times",12,QtGui.QFont.Bold))
         b.setGeometry(100,420,100,30)
@@ -47,7 +47,7 @@ class RegistrationWindow(QtGui.QMainWindow):
 
         #SET OF ENTRIES
         #Taking Student's Name
-        l1=QtGui.QLabel(self)
+        l1=QtWidgets.QLabel(self)
         l1.setAlignment(QtCore.Qt.AlignCenter)
         l1.setGeometry(QtCore.QRect(310,150,130,30))
         l1.setStyleSheet("QLabel { background-color : gray;color :black ; }")
@@ -55,21 +55,21 @@ class RegistrationWindow(QtGui.QMainWindow):
         l1.setFont(font)
         l1.setText("NAME")
 
-        self.e1=QtGui.QLineEdit(self)
+        self.e1=QtWidgets.QLineEdit(self)
         self.e1.setGeometry(450,150,300,30)
         self.e1.setAlignment(QtCore.Qt.AlignCenter)
         font1=QtGui.QFont("Arial",14)
         self.e1.setFont(font1)
 
         #Taking Student's Registration Number
-        l2=QtGui.QLabel(self)
+        l2=QtWidgets.QLabel(self)
         l2.setAlignment(QtCore.Qt.AlignCenter)
         l2.setGeometry(QtCore.QRect(310,250,130,30))
         l2.setStyleSheet("QLabel { background-color : gray;color :black ; }")
         l2.setFont(font)
         l2.setText("ROLL NO.")
 
-        self.e2=QtGui.QLineEdit(self)
+        self.e2=QtWidgets.QLineEdit(self)
         self.e2.setGeometry(450,250,300,30)
         self.e2.setAlignment(QtCore.Qt.AlignCenter)
         self.e2.setFont(font1)
@@ -88,7 +88,7 @@ class RegistrationWindow(QtGui.QMainWindow):
         self.e3.setFont(font1)"""
 
         #Button for clearing fields 
-        b2=QtGui.QPushButton(self)
+        b2=QtWidgets.QPushButton(self)
         b2.setText("CLEAR")
         b2.setFont(QtGui.QFont("Times",12,QtGui.QFont.Bold))
         b2.setGeometry(520,450,100,30)
@@ -97,7 +97,7 @@ class RegistrationWindow(QtGui.QMainWindow):
         b2.clicked.connect(self.erase)
 
         #Label for displaying message
-        self.l4=QtGui.QLabel(self)
+        self.l4=QtWidgets.QLabel(self)
         self.l4.setAlignment(QtCore.Qt.AlignCenter)
         self.l4.setStyleSheet("QLabel {  color:green ; }")
         self.l4.setFont(QtGui.QFont('Times',13))
@@ -105,14 +105,14 @@ class RegistrationWindow(QtGui.QMainWindow):
         self.l4.setText("Please register..")
         
         #Button for submission of data and storing in database 
-        b1=QtGui.QPushButton(self)
+        b1=QtWidgets.QPushButton(self)
         b1.setText("SUBMIT")
         b1.setFont(QtGui.QFont("Times",12,QtGui.QFont.Bold))
         b1.setGeometry(390,450,100,30)
         b1.setStyleSheet("QPushButton { background-color : green;color : white ; }")
         b1.clicked.connect(self.store_in_database)
 
-        b3 = QtGui.QPushButton(self)
+        b3 = QtWidgets.QPushButton(self)
         b3.setText("HOMEPAGE")
         font1=QtGui.QFont("Times",12,QtGui.QFont.Bold)
         b3.setFont(font1)
@@ -267,7 +267,7 @@ class RegistrationWindow(QtGui.QMainWindow):
     
 
 if __name__ == '__main__':  
-    app = QtGui.QApplication([])
+    app = QtWidgets.QApplication([])
     gui = RegistrationWindow()
     gui.show()
     app.exec_()
