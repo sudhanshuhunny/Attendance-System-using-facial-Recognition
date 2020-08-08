@@ -9,6 +9,9 @@ from imutils import paths
 import face_recognition
 import pickle
 
+#bc itna purana ho gya ab muje yaad na
+# KOI VOICE CHAT KA OPTION BTA
+
 #cap = cv2.VideoCapture('http://192.168.43.194:4747/video')
 detector = dlib.get_frontal_face_detector()
 
